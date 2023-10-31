@@ -55,19 +55,36 @@ export const Nav = styled("nav", {
 export const Main = styled("main", {
   padding: "0 5rem",
   minHeight: "100vh",
+  width: "80%",
   display: "flex",
-  alignItems: "center",
   flexDirection: "column",
   gap: 8,
   h1: {
     marginTop: "2.5rem",
+    textAlign: "center",
   },
 
   "> div": {
     display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     flexWrap: "wrap",
     width: "100%",
     padding: ".5rem 2rem",
     gap: "1rem",
+  },
+});
+
+export const Search = styled("div", {
+  input: {
+    width: "35%",
+    padding: ".5rem .8rem",
+    borderRadius: "4px",
+    backgroundColor: "$gray400",
+    color: "$gray100",
+
+    "&::placeholder": {
+      color: "$gray100",
+    },
   },
 });

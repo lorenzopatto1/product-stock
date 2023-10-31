@@ -4,9 +4,8 @@ import { stockActionTypes } from "./actionTypes";
 export type ProductProps = {
   id: number;
   name: string;
-  img: string;
-  price: number;
   quantity: number;
+  price: number;
 };
 
 export interface StockState {
@@ -15,99 +14,7 @@ export interface StockState {
 }
 
 const INITIAL_STATE: StockState = {
-  products: [
-    {
-      id: 1,
-      name: "teste",
-      price: 1,
-      img: "https://picsum.photos/200/300",
-      quantity: 1,
-    },
-    {
-      id: 2,
-      name: "teste",
-      price: 1,
-      img: "https://picsum.photos/200/300",
-      quantity: 1,
-    },
-    {
-      id: 3,
-      name: "teste",
-      price: 1,
-      img: "https://picsum.photos/200/300",
-      quantity: 1,
-    },
-    {
-      id: 4,
-      name: "teste",
-      price: 1,
-      img: "https://picsum.photos/200/300",
-      quantity: 1,
-    },
-    {
-      id: 5,
-      name: "teste",
-      price: 1,
-      img: "https://picsum.photos/200/300",
-      quantity: 1,
-    },
-    {
-      id: 6,
-      name: "teste",
-      price: 1,
-      img: "https://picsum.photos/200/300",
-      quantity: 1,
-    },
-    {
-      id: 7,
-      name: "teste",
-      price: 1,
-      img: "https://picsum.photos/200/300",
-      quantity: 1,
-    },
-    {
-      id: 8,
-      name: "teste",
-      price: 1,
-      img: "https://picsum.photos/200/300",
-      quantity: 1,
-    },
-    {
-      id: 9,
-      name: "teste",
-      price: 1,
-      img: "https://picsum.photos/200/300",
-      quantity: 1,
-    },
-    {
-      id: 10,
-      name: "teste",
-      price: 1,
-      img: "https://picsum.photos/200/300",
-      quantity: 1,
-    },
-    {
-      id: 11,
-      name: "teste",
-      price: 1,
-      img: "https://picsum.photos/200/300",
-      quantity: 1,
-    },
-    {
-      id: 12,
-      name: "teste",
-      price: 1,
-      img: "https://picsum.photos/200/300",
-      quantity: 1,
-    },
-    {
-      id: 13,
-      name: "teste",
-      price: 1,
-      img: "https://picsum.photos/200/300",
-      quantity: 1,
-    },
-  ],
+  products: [],
   balance: 0,
 };
 
@@ -120,6 +27,14 @@ export const stockReducer: Reducer<StockState> = (
       return {
         ...state,
         products: [...state.products, { ...action.payload }],
+      };
+    }
+    case stockActionTypes.REMOVE_PRODUCT: {
+      return {
+        ...state,
+        products: [
+          ...state.products.filter((product) => product.id !== action.payload),
+        ],
       };
     }
     default:
