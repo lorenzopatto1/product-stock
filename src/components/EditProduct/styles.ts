@@ -1,21 +1,24 @@
 import { styled } from "@stitches/react";
 
 export const Container = styled("div", {
-  width: "100vw",
-  minHeight: "100vh",
-  flex: "1, 10",
+  width: "100%",
+  height: "100%",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
   flexDirection: "column",
-  position: "relative",
-  "> a": {
-    position: "absolute",
-    top: "8px",
-    left: "8px",
+  position: "absolute",
+  backgroundColor: "$gray800",
+  zIndex: 1,
+
+  svg: {
     cursor: "pointer",
+    position: "absolute",
+    top: "30px",
+    left: "8px",
   },
 });
+
 export const Form = styled("form", {
   marginTop: "1rem",
   display: "flex",

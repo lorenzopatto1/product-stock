@@ -11,8 +11,8 @@ export const removeProductToStock = (payload: number) => ({
   payload,
 });
 
-export const increaseQuantity = (payload: number) => ({
-  type: stockActionTypes.INCREASE_PRODUCT_QUANTITY,
+export const editProductFromStock = (payload: ProductProps) => ({
+  type: stockActionTypes.EDIT_PRODUCT,
   payload,
 });
 

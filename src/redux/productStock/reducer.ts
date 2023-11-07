@@ -37,6 +37,21 @@ export const stockReducer: Reducer<StockState> = (
         ],
       };
     }
+    case stockActionTypes.EDIT_PRODUCT: {
+      return {
+        ...state,
+        products: state.products.map((product) =>
+          product.id === action.payload.id
+            ? {
+                ...product,
+                name: action.payload.name,
+                quantity: action.payload.quantity,
+                price: action.payload.price,
+              }
+            : product
+        ),
+      };
+    }
     default:
       return state;
   }

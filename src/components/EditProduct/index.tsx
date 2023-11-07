@@ -3,10 +3,10 @@ import { ArrowLeft } from "@phosphor-icons/react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import * as yup from "yup";
+import { editProductFromStock } from "../../redux/productStock/actions";
+import { ProductProps } from "../../redux/productStock/reducer";
 import { Input } from "../../components/Form/Input";
-import { addProductToStock } from "../../redux/productStock/actions";
 import { Container, Form } from "./styles";
-import { Link, useNavigate } from "react-router-dom";
 
 interface FormData {
   name: string;
@@ -28,9 +28,14 @@ const newProductFormSchema = yup.object().shape({
     .required("Campo Obrigatório"),
 });
 
-export const NewProduct = () => {
+interface EditProductProps {
+  products: ProductProps;
+  closeModal: () => void;
+}
+
+export const EditProduct = ({ products, closeModal }: EditProductProps) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit: onSubmit,
@@ -40,41 +45,40 @@ export const NewProduct = () => {
   });
   const handleSubmit: SubmitHandler<FormData> = (data) => {
     dispatch(
-      addProductToStock({
-        id: Math.random(),
-        name: data.name.toLowerCase(),
-        price: data.price,
-        quantity: data.quantity,
+      editProductFromStock({
+        id: products.id,
+        ...data,
       })
     );
-    navigate("/");
+    closeModal();
   };
 
   return (
     <Container>
-      <Link to="/">
-        <ArrowLeft />
-      </Link>
-      <h1>Cadastre um novo produto:</h1>
+      <ArrowLeft onClick={closeModal} />
+      <h1>Editar Informações do produto: {products.name.toUpperCase()}</h1>
 
       <Form onSubmit={onSubmit(handleSubmit)}>
         <Input
           type="text"
-          label="Nome do Produto:"
+          label="Novo nome do Produto:"
+          value={products.name}
           error={errors.name}
           placeholder="Nome do Produto"
           {...register("name")}
         />
         <Input
           type="number"
-          label="Quantidade de estoque:"
+          label="Nova quantidade de estoque:"
+          value={products.quantity}
           error={errors.quantity}
           placeholder="Digite a quantidade de estoque"
           {...register("quantity")}
         />
         <Input
           type="number"
-          label="Preço do produto:"
+          label="Novo preço do produto:"
+          value={products.price}
           error={errors.price}
           placeholder="Digite o preço do produto"
           {...register("price")}
