@@ -1,7 +1,7 @@
 import { styled } from "@stitches/react";
 
 export const Container = styled("div", {
-  padding: "2rem",
+  padding: ".8rem 1rem 1.2rem",
   borderRadius: ".5rem",
   color: "$gray800",
   position: "relative",
@@ -30,6 +30,16 @@ export const Settings = styled("div", {
   },
 });
 
+export const ProductName = styled("h2", {
+  fontSize: "$2xl",
+  lineHeight: "$tall",
+});
+
+export const Price = styled("div", {
+  fontWeight: "bold",
+  fontSize: "$xl",
+});
+
 export const Content = styled("div", {
   marginTop: "1rem",
   display: "flex",
@@ -43,5 +53,16 @@ export const Content = styled("div", {
   },
   span: {
     color: "$gray800",
+  },
+});
+
+export const Quantity = styled("div", {
+  marginTop: "1rem",
+  display: "flex",
+  gap: ".5rem",
+  alignItems: "center",
+
+  "> h3": {
+    marginBottom: "0",
   },
 });
