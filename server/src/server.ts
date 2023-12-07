@@ -45,6 +45,6 @@ app.get("/", async (request, response) => {
   response.send(products);
 });
 
-app.listen("3333", () => {
+app.listen(process.env.PORT || "3333", () => {
   console.log("listening on http://localhost:3333/");
 });
