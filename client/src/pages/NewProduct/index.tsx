@@ -1,12 +1,11 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ArrowLeft } from "@phosphor-icons/react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { Input } from "../../components/Form/Input";
-import { addProductToStock } from "../../redux/productStock/actions";
+import { api } from "../../lib/api";
 import { Container, Form } from "./styles";
-import { Link, useNavigate } from "react-router-dom";
 
 interface FormData {
   name: string;
@@ -29,7 +28,6 @@ const newProductFormSchema = yup.object().shape({
 });
 
 export const NewProduct = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const {
     register,
@@ -38,15 +36,16 @@ export const NewProduct = () => {
   } = useForm({
     resolver: yupResolver(newProductFormSchema),
   });
-  const handleSubmit: SubmitHandler<FormData> = (data) => {
-    dispatch(
-      addProductToStock({
-        id: Math.random(),
-        name: data.name.toLowerCase(),
-        price: data.price,
-        quantity: data.quantity,
-      })
-    );
+  const handleSubmit: SubmitHandler<FormData> = async ({
+    name,
+    price,
+    quantity,
+  }) => {
+    await api.post("/product", {
+      name,
+      price,
+      quantity,
+    });
     navigate("/");
   };
 

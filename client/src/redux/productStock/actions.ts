@@ -6,7 +6,7 @@ export const addProductToStock = (payload: ProductProps) => ({
   payload,
 });
 
-export const removeProductToStock = (payload: number) => ({
+export const removeProductToStock = (payload: string) => ({
   type: stockActionTypes.REMOVE_PRODUCT,
   payload,
 });

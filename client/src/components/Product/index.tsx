@@ -1,43 +1,33 @@
 import { Gear, Trash } from "@phosphor-icons/react";
 import { ProductProps } from "../../redux/productStock/reducer";
 
+import { useNavigate } from "react-router-dom";
+import { api } from "../../lib/api";
 import {
   Container,
-  Settings,
-  ProductName,
-  Price,
   Content,
+  Price,
+  ProductName,
   Quantity,
+  Settings,
 } from "./styles";
-import { removeProductToStock } from "../../redux/productStock/actions";
-import { useDispatch } from "react-redux";
-import { useState } from "react";
-import { EditProduct } from "../EditProduct";
 
 interface ProductComponentProps {
   product: ProductProps;
 }
 
 export const Product = ({ product }: ProductComponentProps) => {
-  const [editModal, setEditModal] = useState(false);
+  const navigate = useNavigate();
 
-  const closeEditModal = () => {
-    setEditModal(false);
-  };
-
-  const dispatch = useDispatch();
-  const handleProductRemove = () => {
-    dispatch(removeProductToStock(product.id));
+  const handleProductRemove = async () => {
+    await api.delete(`/product/${product.id}`);
   };
 
   return (
     <>
-      {editModal && (
-        <EditProduct closeModal={closeEditModal} products={product} />
-      )}
       <Container>
         <Settings>
-          <Gear size={16} onClick={() => setEditModal(true)} />
+          <Gear size={16} onClick={() => navigate(`/product/${product.id}`)} />
           <Trash size={16} onClick={handleProductRemove} />
         </Settings>
         <Content>

@@ -1,0 +1,27 @@
+POST http://localhost:3333/product
+Content-Type: application/json
+
+{
+  "name": "Long neck heineken",
+  "price": 5,
+  "quantity": 8
+}
+
+###
+
+GET http://localhost:3333/
+
+###
+
+PUT http://localhost:3333/product/827165d1-dad8-4d34-ba46-db66a69715da
+Content-Type: application/json
+
+{
+  "name": "editei",
+  "price": 5,
+  "quantity": 8
+}
+
+###
+
+DELETE http://localhost:3333/product/827165d1-dad8-4d34-ba46-db66a69715da

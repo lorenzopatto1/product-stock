@@ -1,16 +1,21 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import logo from "../../assets/logo.webp";
 import { Product } from "../../components/Product";
-import { ApplicationState } from "../../redux/store";
+import { api } from "../../lib/api";
+import { ProductProps } from "../../redux/productStock/reducer";
 import { Container, Header, Main, Search } from "./styles";
-import { Link } from "react-router-dom";
 
 function App() {
   const [search, setSearch] = useState("");
-  const { products } = useSelector(
-    (rootReducer: ApplicationState) => rootReducer.stockReducer
-  );
+
+  const [products, setProducts] = useState<ProductProps[]>([]);
+
+  useEffect(() => {
+    api.get("/").then((response) => {
+      setProducts(response.data);
+    });
+  });
 
   return (
     <Container>

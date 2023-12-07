@@ -64,10 +64,9 @@ export const Main = styled("main", {
     textAlign: "center",
   },
 
-  "> div": {
+  "> div:last-child": {
     display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "start",
     flexWrap: "wrap",
     width: "100%",
     padding: ".5rem 2rem",
@@ -76,6 +75,8 @@ export const Main = styled("main", {
 });
 
 export const Search = styled("div", {
+  display: "flex",
+  justifyContent: "center",
   input: {
     width: "35%",
     padding: ".5rem .8rem",

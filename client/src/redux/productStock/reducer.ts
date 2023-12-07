@@ -2,7 +2,7 @@ import { Reducer } from "redux";
 import { stockActionTypes } from "./actionTypes";
 
 export type ProductProps = {
-  id: number;
+  id: string;
   name: string;
   quantity: number;
   price: number;
