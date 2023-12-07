@@ -1,4 +1,4 @@
-POST http://localhost:3333/product
+POST https://lorenzo-simple-crud.onrender.com/product
 Content-Type: application/json
 
 {
@@ -9,11 +9,11 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3333/
+GET https://lorenzo-simple-crud.onrender.com/
 
 ###
 
-PUT http://localhost:3333/product/827165d1-dad8-4d34-ba46-db66a69715da
+PUT https://lorenzo-simple-crud.onrender.com/product/827165d1-dad8-4d34-ba46-db66a69715da
 Content-Type: application/json
 
 {
@@ -24,4 +24,4 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3333/product/827165d1-dad8-4d34-ba46-db66a69715da
+DELETE https://lorenzo-simple-crud.onrender.com/product/827165d1-dad8-4d34-ba46-db66a69715da
