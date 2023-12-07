@@ -8,6 +8,8 @@ import { Container, FormErrorMessage } from "./styles";
 import { FieldError } from "react-hook-form";
 
 interface InputProps {
+  placeholder?: string;
+  step?: string;
   type: string;
   name: string;
   label?: string;
@@ -18,7 +20,17 @@ interface InputProps {
 }
 
 const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
-  { type, name, label, error = undefined, value, onChange, ...rest },
+  {
+    type,
+    name,
+    label,
+    error = undefined,
+    value,
+    onChange,
+    placeholder,
+    step,
+    ...rest
+  },
   ref
 ) => {
   const [inputValue, setInputValue] = useState(value);
@@ -34,6 +46,8 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
         name={name}
         id={name}
         ref={ref}
+        placeholder={placeholder}
+        step={step}
         value={inputValue}
         onChange={handleInputChange}
         {...rest}
