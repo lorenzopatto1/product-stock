@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.webp";
-import { Product } from "../../components/Product";
+import { Product, ProductProps } from "../../components/Product";
 import { api } from "../../lib/api";
-import { ProductProps } from "../../redux/productStock/reducer";
 import { Container, Header, Main, Search } from "./styles";
 
 function App() {

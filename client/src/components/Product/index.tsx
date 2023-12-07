@@ -1,5 +1,11 @@
 import { Gear, Trash } from "@phosphor-icons/react";
-import { ProductProps } from "../../redux/productStock/reducer";
+
+export type ProductProps = {
+  id?: string;
+  name: string;
+  price: number;
+  quantity: number;
+};
 
 import { useNavigate } from "react-router-dom";
 import { api } from "../../lib/api";

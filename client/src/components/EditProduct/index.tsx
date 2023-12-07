@@ -6,8 +6,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import * as yup from "yup";
 import { Input } from "../../components/Form/Input";
 import { api } from "../../lib/api";
-import { ProductProps } from "../../redux/productStock/reducer";
 import { Container, Form } from "./styles";
+import { ProductProps } from "../Product";
 
 interface FormData {
   name: string;
